@@ -26,6 +26,8 @@ export const lecturesTable = pgTable("lectures", {
   weekNumber: integer("week_number").notNull(),
   title: text("title").notNull(),
   body: text("body").notNull(),
+  bodyMedium: text("body_medium"),
+  bodyLong: text("body_long"),
 });
 
 export const assignmentsTable = pgTable("assignments", {

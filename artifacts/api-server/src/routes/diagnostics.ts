@@ -409,29 +409,61 @@ router.post("/diagnostics/synthetic-run", async (_req, res) => {
   res.json({ ok, generatedAt: new Date().toISOString(), steps });
 });
 
-// ---------- Expand lectures: rewrite each lecture with worked examples ----------
-router.post("/diagnostics/expand-lectures", async (_req, res) => {
-  const lectures = await db
+// ---------- Expand lectures: generate medium / long versions with more examples ----------
+router.post("/diagnostics/expand-lectures", async (req, res) => {
+  const rawLevel = String(req.query.level ?? "");
+  if (rawLevel !== "medium" && rawLevel !== "long") {
+    res.status(400).json({ error: "level must be 'medium' or 'long'" });
+    return;
+  }
+  const level: "medium" | "long" = rawLevel;
+
+  const rawId = req.query.id;
+  let onlyId: number | null = null;
+  if (rawId !== undefined && rawId !== "") {
+    const parsed = Number(rawId);
+    if (!Number.isInteger(parsed) || parsed <= 0) {
+      res.status(400).json({ error: "id must be a positive integer" });
+      return;
+    }
+    onlyId = parsed;
+  }
+
+  const all = await db
     .select({
       id: lecturesTable.id,
       title: lecturesTable.title,
       body: lecturesTable.body,
+      bodyMedium: lecturesTable.bodyMedium,
+      bodyLong: lecturesTable.bodyLong,
     })
     .from(lecturesTable)
     .orderBy(asc(lecturesTable.id));
+  const lectures = onlyId !== null ? all.filter((l) => l.id === onlyId) : all;
+  if (onlyId !== null && lectures.length === 0) {
+    res.status(404).json({ error: `no lecture with id ${onlyId}` });
+    return;
+  }
+
+  const ratio = level === "long" ? "roughly 2x to 3x the length of the SHORT version" : "roughly 1.5x to 2x the length of the SHORT version";
+  const moreExamples =
+    level === "long"
+      ? "At least TWO additional fully worked examples for every concept beyond what the short version has — pick contrasting cases (edge cases, common mistakes, larger numbers, real-world framings)."
+      : "At least ONE additional fully worked example for every concept beyond what the short version has.";
+  const moreExplanation =
+    level === "long"
+      ? "Considerably more explanation: motivate every rule, explain WHY it works, name common pitfalls, and add brief 'sanity check' notes after computations."
+      : "Noticeably more explanation: clarify each definition, motivate each rule, and add a short 'why this works' note where useful.";
 
   const sys =
-    "You are a college quantitative-reasoning lecturer rewriting your own lecture notes. " +
-    "Your job: take the SKELETON below and expand it into a complete teaching lecture for a college freshman who has never seen this material. " +
-    "RULES, no exceptions:\n" +
-    "1. KEEP every heading and every concept from the skeleton, in the same order, with the same names.\n" +
-    "2. After EVERY definition, rule, formula, or claim, immediately give at least one fully worked example with concrete numbers, showing every step. " +
-    "If a concept has subtleties or common confusions, give two or three examples that contrast them.\n" +
-    "3. Use Markdown. Use `## Example` (or `### Example 1`, `### Example 2`) sub-headings for examples so the student can find them. " +
-    "Show work as numbered steps. Inline math uses `$...$`, display math uses `$$...$$` (escape backslashes in LaTeX commands).\n" +
-    "4. Friendly, plain English. No filler, no hedging, no 'in conclusion'. Examples carry the load.\n" +
-    "5. Return ONLY the rewritten Markdown lecture body. No preface, no commentary, no code fences around the whole thing.\n" +
-    "6. Length: typically 3-6x the skeleton. Cover everything the skeleton covers and nothing else.";
+    `You are a college quantitative-reasoning lecturer producing the ${level.toUpperCase()} version of a lecture. ` +
+    "You are given the SHORT version of the lecture. Rewrite it as a longer teaching version. RULES, no exceptions:\n" +
+    "1. KEEP every heading and every concept from the SHORT version, in the same order, with the same names. You may add new sub-sections only when needed to introduce additional examples — but no new top-level topics.\n" +
+    `2. ${moreExplanation}\n` +
+    `3. ${moreExamples} Use \`## Example\` / \`### Example 1\`, \`### Example 2\` headings, with numbered steps. Inline math \`$...$\`, display math \`$$...$$\` (escape backslashes in LaTeX commands).\n` +
+    `4. Length target: ${ratio}.\n` +
+    "5. Friendly, plain English. No filler, no hedging, no 'in conclusion'. Examples carry the load.\n" +
+    "6. Return ONLY the rewritten Markdown lecture body. No preface, no commentary, no code fences around the whole thing.";
 
   let updated = 0;
   let failed = 0;
@@ -441,16 +473,17 @@ router.post("/diagnostics/expand-lectures", async (_req, res) => {
     await Promise.all(
       batch.map(async (l) => {
         try {
-          const user = `LECTURE TITLE: ${l.title}\n\nSKELETON:\n"""\n${l.body}\n"""`;
+          const user = `LECTURE TITLE: ${l.title}\n\nSHORT VERSION:\n"""\n${l.body}\n"""`;
           const expanded = await chatText(sys, user);
-          if (!expanded || expanded.trim().length < l.body.length) {
+          if (!expanded || expanded.trim().length < l.body.length * 0.85) {
             failed++;
             return;
           }
-          await db
-            .update(lecturesTable)
-            .set({ body: expanded.trim() })
-            .where(eq(lecturesTable.id, l.id));
+          const patch =
+            level === "long"
+              ? { bodyLong: expanded.trim() }
+              : { bodyMedium: expanded.trim() };
+          await db.update(lecturesTable).set(patch).where(eq(lecturesTable.id, l.id));
           updated++;
         } catch {
           failed++;
@@ -459,7 +492,7 @@ router.post("/diagnostics/expand-lectures", async (_req, res) => {
     );
   }
 
-  res.json({ ok: failed === 0, updated, failed, total: lectures.length });
+  res.json({ ok: failed === 0, level, updated, failed, total: lectures.length });
 });
 
 // ---------- Reset: wipe all student progress, keep course content ----------

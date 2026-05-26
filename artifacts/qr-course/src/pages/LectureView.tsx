@@ -51,6 +51,21 @@ export default function LectureView() {
   }, []);
 
   const [tab, setTab] = useState<"tutor" | "practice">("tutor");
+  const [level, setLevel] = useState<"short" | "medium" | "long">("short");
+
+  const availableLevels = useMemo(() => {
+    const out: Array<"short" | "medium" | "long"> = ["short"];
+    if (lecture?.bodyMedium) out.push("medium");
+    if (lecture?.bodyLong) out.push("long");
+    return out;
+  }, [lecture?.bodyMedium, lecture?.bodyLong]);
+
+  const activeBody =
+    level === "long" && lecture?.bodyLong
+      ? lecture.bodyLong
+      : level === "medium" && lecture?.bodyMedium
+        ? lecture.bodyMedium
+        : (lecture?.body ?? "");
 
   return (
     <Layout>
@@ -76,16 +91,46 @@ export default function LectureView() {
             </div>
           ) : lecture ? (
             <article>
-              <header className="mb-8 mt-2">
+              <header className="mb-6 mt-2">
                 <h1 className="text-3xl font-serif font-bold text-primary mb-3 leading-tight">
                   {lecture.title}
                 </h1>
-                <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                  Week {lecture.weekNumber}
+                <div className="flex items-center justify-between flex-wrap gap-2">
+                  <div className="text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                    Week {lecture.weekNumber}
+                  </div>
+                  <div className="inline-flex rounded-md border border-border overflow-hidden text-xs">
+                    {(["short", "medium", "long"] as const).map((lvl) => {
+                      const enabled = availableLevels.includes(lvl);
+                      const active = level === lvl;
+                      return (
+                        <button
+                          key={lvl}
+                          onClick={() => enabled && setLevel(lvl)}
+                          disabled={!enabled}
+                          title={
+                            enabled
+                              ? `${lvl[0].toUpperCase() + lvl.slice(1)} version`
+                              : `${lvl[0].toUpperCase() + lvl.slice(1)} version not generated yet — click "Generate medium + long lectures" in the top bar`
+                          }
+                          className={`px-3 py-1.5 font-medium uppercase tracking-wider transition-colors ${
+                            active
+                              ? "bg-primary text-primary-foreground"
+                              : enabled
+                                ? "bg-background hover:bg-secondary text-foreground"
+                                : "bg-background/50 text-muted-foreground/50 cursor-not-allowed"
+                          }`}
+                          data-testid={`button-level-${lvl}`}
+                        >
+                          {lvl}
+                        </button>
+                      );
+                    })}
+                  </div>
                 </div>
               </header>
               <div className="bg-card border shadow-sm rounded-lg p-6 md:p-8" ref={articleRef}>
-                <MarkdownRenderer content={lecture.body} />
+                <MarkdownRenderer content={activeBody} />
                 <div className="mt-6 pt-4 border-t border-dashed border-border text-xs text-muted-foreground italic">
                   Tip: highlight any passage above to ask the tutor about it, or to generate practice problems specifically on what you selected.
                 </div>

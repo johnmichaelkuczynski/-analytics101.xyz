@@ -23,8 +23,18 @@ export interface Lecture {
   topicId: number;
   title: string;
   weekNumber: number;
-  /** Markdown lecture text. The frontend lets users select passages and send them to the tutor. */
+  /** Short Markdown lecture text (the baseline / minimum-detail version). The frontend lets users select passages and send them to the tutor. */
   body: string;
+  /**
+     * Medium-length version with more explanation and more examples. Null if not yet generated.
+     * @nullable
+     */
+  bodyMedium?: string | null;
+  /**
+     * Long version with the most explanation and the most examples. Null if not yet generated.
+     * @nullable
+     */
+  bodyLong?: string | null;
 }
 
 export interface LectureRef {
