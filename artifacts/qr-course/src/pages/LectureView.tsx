@@ -385,7 +385,7 @@ function TutorPane({
                   : "bg-card border border-border"
               }`}
             >
-              <MarkdownRenderer content={m.text} />
+              <MarkdownRenderer content={m.text} inverted={m.role === "user"} />
             </div>
           </div>
         ))}

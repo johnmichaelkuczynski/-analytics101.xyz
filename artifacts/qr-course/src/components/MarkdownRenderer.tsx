@@ -6,6 +6,7 @@ import "katex/dist/katex.min.css";
 
 interface MarkdownRendererProps {
   content: string;
+  inverted?: boolean;
 }
 
 function normalize(src: string): string {
@@ -20,10 +21,15 @@ function normalize(src: string): string {
   return s;
 }
 
-export function MarkdownRenderer({ content }: MarkdownRendererProps) {
+export function MarkdownRenderer({ content, inverted = false }: MarkdownRendererProps) {
   const normalized = normalize(content ?? "");
+  const base =
+    "prose max-w-none prose-headings:font-serif prose-p:leading-relaxed prose-a:text-primary prose-pre:bg-slate-50 prose-code:before:content-none prose-code:after:content-none";
+  const theme = inverted
+    ? "prose-invert text-inherit prose-headings:text-inherit prose-strong:text-inherit prose-code:text-inherit prose-a:text-inherit"
+    : "prose-slate dark:prose-invert";
   return (
-    <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-serif prose-p:leading-relaxed prose-a:text-primary prose-pre:bg-slate-50 prose-code:before:content-none prose-code:after:content-none">
+    <div className={`${base} ${theme}`}>
       <ReactMarkdown
         remarkPlugins={[remarkGfm, remarkMath]}
         rehypePlugins={[[rehypeKatex, { strict: false, throwOnError: false, output: "html" }]]}
