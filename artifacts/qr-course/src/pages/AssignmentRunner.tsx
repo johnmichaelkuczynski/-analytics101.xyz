@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Layout } from "@/components/layout/Layout";
 import { useParams, Link } from "wouter";
 import { 
@@ -57,20 +57,6 @@ export default function AssignmentRunner() {
         data: { problemId, answer: val, trace }
       });
     }
-  };
-
-  const _handleInsertSymbol = (symbol: string) => {
-    const problem = assignment?.problems[currentProblemIdx];
-    if (!problem) return;
-    const currentVal = answers[problem.id] || "";
-    const newVal = currentVal + symbol;
-    
-    // Fake trace for keyboard insert
-    const trace: KeystrokeTrace = {
-      keystrokeCount: 1, eraseCount: 0, durationMs: 0
-    };
-    
-    handleAnswerChange(problem.id, newVal, trace);
   };
 
   const handleSubmit = () => {
@@ -168,7 +154,6 @@ export default function AssignmentRunner() {
               <AnswerInput 
                 value={answers[currentProblem.id] || ""}
                 onChange={(val, trace) => handleAnswerChange(currentProblem.id, val, trace)}
-                promptSource={currentProblem.prompt}
               />
             </div>
 
