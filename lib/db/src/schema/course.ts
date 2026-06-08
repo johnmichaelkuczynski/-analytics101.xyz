@@ -106,6 +106,12 @@ export const practiceSessionsTable = pgTable("practice_sessions", {
   id: serial("id").primaryKey(),
   weekNumber: integer("week_number"),
   topicId: integer("topic_id"),
+  // When set, this session is an infinite practice version of a specific graded
+  // assignment (homework/test/midterm/final) rather than open topic practice.
+  assignmentId: integer("assignment_id").references(() => assignmentsTable.id, {
+    onDelete: "cascade",
+  }),
+  mode: text("mode").notNull().default("topic"), // topic | assignment
   tutorEnabled: boolean("tutor_enabled").notNull().default(false),
   focusOnWeaknesses: boolean("focus_on_weaknesses").notNull().default(true),
   difficulty: doublePrecision("difficulty").notNull().default(2.0),

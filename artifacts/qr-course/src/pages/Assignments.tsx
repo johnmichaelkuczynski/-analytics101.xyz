@@ -61,10 +61,15 @@ export default function Assignments() {
                             <span className="font-semibold text-foreground">Score: {item.bestScore}%</span>
                           )}
                         </div>
+                        <Link href={`/assignments/${item.id}/practice`}>
+                          <Button className="w-full bg-chart-2 hover:bg-chart-2/90 text-white">
+                            ✨ Practice first — unlimited & never graded
+                          </Button>
+                        </Link>
                         <Link href={`/assignments/${item.id}`}>
                           <Button className="w-full" variant={item.status === 'submitted' ? "outline" : "default"}>
-                            {item.status === 'submitted' ? 'Review Results' : 
-                             item.status === 'in_progress' ? 'Resume' : 'Start'}
+                            {item.status === 'submitted' ? 'Review Results' :
+                             item.status === 'in_progress' ? 'Resume' : 'Take the graded version'}
                           </Button>
                         </Link>
                       </CardContent>

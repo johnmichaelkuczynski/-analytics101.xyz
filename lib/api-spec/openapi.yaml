@@ -213,6 +213,48 @@ paths:
               schema:
                 $ref: "#/components/schemas/AttemptResult"
 
+  /assignments/{assignmentId}/practice:
+    post:
+      operationId: generatePracticeAssignment
+      tags: [practice]
+      summary: Generate a fresh, never-graded practice version of an assignment (infinite)
+      parameters:
+        - name: assignmentId
+          in: path
+          required: true
+          schema: { type: integer }
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PracticeAssignmentSet"
+
+  /practice/assignment-sessions/{sessionId}/grade:
+    post:
+      operationId: gradePracticeAssignment
+      tags: [practice]
+      summary: Grade all answers in a practice-assignment set with rich coaching feedback
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          schema: { type: integer }
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/PracticeAssignmentGradeInput"
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PracticeAssignmentGrade"
+
   /practice/sessions:
     post:
       operationId: startPracticeSession
@@ -709,6 +751,70 @@ components:
         explanation: { type: string }
         newDifficulty: { type: number }
         tutorTip: { type: ["string", "null"] }
+
+    PracticeAssignmentSet:
+      type: object
+      required: [sessionId, assignmentId, title, kind, instructions, problems]
+      properties:
+        sessionId: { type: integer }
+        assignmentId: { type: integer }
+        title: { type: string }
+        kind: { type: string }
+        instructions: { type: ["string", "null"] }
+        problems:
+          type: array
+          items:
+            $ref: "#/components/schemas/PracticeAssignmentProblem"
+
+    PracticeAssignmentProblem:
+      type: object
+      required: [id, prompt, topicId]
+      properties:
+        id: { type: integer }
+        prompt: { type: string }
+        topicId: { type: integer }
+        topicTitle: { type: ["string", "null"] }
+
+    PracticeAssignmentGradeInput:
+      type: object
+      required: [answers]
+      properties:
+        answers:
+          type: array
+          items:
+            $ref: "#/components/schemas/PracticeAssignmentAnswer"
+
+    PracticeAssignmentAnswer:
+      type: object
+      required: [problemId, answer]
+      properties:
+        problemId: { type: integer }
+        answer: { type: string }
+        trace:
+          $ref: "#/components/schemas/KeystrokeTrace"
+
+    PracticeAssignmentGrade:
+      type: object
+      required: [score, total, percent, results]
+      properties:
+        score: { type: number }
+        total: { type: number }
+        percent: { type: number }
+        results:
+          type: array
+          items:
+            $ref: "#/components/schemas/PracticeAssignmentResult"
+
+    PracticeAssignmentResult:
+      type: object
+      required: [problemId, prompt, correct, correctAnswer, feedback]
+      properties:
+        problemId: { type: integer }
+        prompt: { type: string }
+        correct: { type: boolean }
+        userAnswer: { type: string }
+        correctAnswer: { type: string }
+        feedback: { type: string }
 
     TutorAskInput:
       type: object

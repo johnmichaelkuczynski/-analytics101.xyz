@@ -267,6 +267,69 @@ export const SubmitAttemptResponse = zod.object({
 
 
 /**
+ * @summary Generate a fresh, never-graded practice version of an assignment (infinite)
+ */
+export const GeneratePracticeAssignmentParams = zod.object({
+  "assignmentId": zod.coerce.number()
+})
+
+export const GeneratePracticeAssignmentResponse = zod.object({
+  "sessionId": zod.number(),
+  "assignmentId": zod.number(),
+  "title": zod.string(),
+  "kind": zod.string(),
+  "instructions": zod.string().nullable(),
+  "problems": zod.array(zod.object({
+  "id": zod.number(),
+  "prompt": zod.string(),
+  "topicId": zod.number(),
+  "topicTitle": zod.string().nullish()
+}))
+})
+
+
+/**
+ * @summary Grade all answers in a practice-assignment set with rich coaching feedback
+ */
+export const GradePracticeAssignmentParams = zod.object({
+  "sessionId": zod.coerce.number()
+})
+
+export const gradePracticeAssignmentBodyAnswersItemTraceBulkInsertCountDefault = 0;
+export const gradePracticeAssignmentBodyAnswersItemTraceLongestBulkInsertCharsDefault = 0;
+export const gradePracticeAssignmentBodyAnswersItemTraceRewriteSegmentsDefault = 0;
+
+export const GradePracticeAssignmentBody = zod.object({
+  "answers": zod.array(zod.object({
+  "problemId": zod.number(),
+  "answer": zod.string(),
+  "trace": zod.object({
+  "keystrokeCount": zod.number(),
+  "eraseCount": zod.number(),
+  "bulkInsertCount": zod.number().default(gradePracticeAssignmentBodyAnswersItemTraceBulkInsertCountDefault),
+  "longestBulkInsertChars": zod.number().default(gradePracticeAssignmentBodyAnswersItemTraceLongestBulkInsertCharsDefault),
+  "rewriteSegments": zod.number().default(gradePracticeAssignmentBodyAnswersItemTraceRewriteSegmentsDefault),
+  "durationMs": zod.number()
+}).optional()
+}))
+})
+
+export const GradePracticeAssignmentResponse = zod.object({
+  "score": zod.number(),
+  "total": zod.number(),
+  "percent": zod.number(),
+  "results": zod.array(zod.object({
+  "problemId": zod.number(),
+  "prompt": zod.string(),
+  "correct": zod.boolean(),
+  "userAnswer": zod.string().optional(),
+  "correctAnswer": zod.string(),
+  "feedback": zod.string()
+}))
+})
+
+
+/**
  * @summary Start a new practice session (infinite, adaptive)
  */
 export const startPracticeSessionBodyFocusOnWeaknessesDefault = true;

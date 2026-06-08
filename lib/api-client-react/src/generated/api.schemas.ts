@@ -257,6 +257,50 @@ export interface PracticeGrade {
   tutorTip?: string | null;
 }
 
+export interface PracticeAssignmentProblem {
+  id: number;
+  prompt: string;
+  topicId: number;
+  /** @nullable */
+  topicTitle?: string | null;
+}
+
+export interface PracticeAssignmentSet {
+  sessionId: number;
+  assignmentId: number;
+  title: string;
+  kind: string;
+  /** @nullable */
+  instructions: string | null;
+  problems: PracticeAssignmentProblem[];
+}
+
+export interface PracticeAssignmentAnswer {
+  problemId: number;
+  answer: string;
+  trace?: KeystrokeTrace;
+}
+
+export interface PracticeAssignmentGradeInput {
+  answers: PracticeAssignmentAnswer[];
+}
+
+export interface PracticeAssignmentResult {
+  problemId: number;
+  prompt: string;
+  correct: boolean;
+  userAnswer?: string;
+  correctAnswer: string;
+  feedback: string;
+}
+
+export interface PracticeAssignmentGrade {
+  score: number;
+  total: number;
+  percent: number;
+  results: PracticeAssignmentResult[];
+}
+
 export interface TutorAskInput {
   /** @nullable */
   sessionId?: number | null;

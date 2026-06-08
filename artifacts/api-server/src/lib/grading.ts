@@ -67,3 +67,49 @@ export async function gradeAnswer(opts: {
     };
   }
 }
+
+// Rich, coaching-style feedback for PRACTICE assignments. Unlike gradeAnswer
+// (which returns a terse 1-3 sentence verdict for graded work), this returns
+// generous, structured feedback designed to help a student improve before they
+// sit the real graded version. Practice is never penalized, so feedback leans
+// encouraging and specific.
+export async function gradePracticeEssay(opts: {
+  prompt: string;
+  correctAnswer: string;
+  userAnswer: string;
+}): Promise<{ correct: boolean; feedback: string }> {
+  const user = (opts.userAnswer ?? "").trim();
+  const correct = opts.correctAnswer ?? "";
+
+  if (!user) {
+    return {
+      correct: false,
+      feedback: `You left this one blank. Give it a real attempt — even a rough draft — and resubmit for feedback.\n\n**Model answer:** ${correct}`,
+    };
+  }
+
+  try {
+    const out = await chatJson<{
+      correct: boolean;
+      feedback: string;
+    }>(
+      "You are a warm, rigorous college ethics tutor grading a PRACTICE answer (never penalized — the goal is to help the student improve before the real graded version). Compare the student's answer to the model answer. Decide `correct` = true if it captures the substantive point (accept paraphrases and equivalent reasoning), false otherwise. Then write `feedback` as encouraging Markdown with these sections: **What you got right** (be specific, cite their wording), **What's missing or off** (the key gaps vs. the model answer), and **How to strengthen it** (1-2 concrete next steps). 4-8 sentences total. Always weave in the core idea of the model answer so they can compare. Output strict JSON {\"correct\": boolean, \"feedback\": string}.",
+      JSON.stringify({
+        prompt: opts.prompt,
+        model_answer: correct,
+        student_answer: user,
+      }),
+    );
+    return {
+      correct: !!out.correct,
+      feedback:
+        out.feedback ||
+        `Here's the model answer to compare against:\n\n${correct}`,
+    };
+  } catch {
+    return {
+      correct: false,
+      feedback: `I couldn't reach the grader just now. Compare your answer against the model answer and try again:\n\n**Model answer:** ${correct}`,
+    };
+  }
+}
