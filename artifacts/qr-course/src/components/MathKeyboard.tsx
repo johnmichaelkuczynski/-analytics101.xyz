@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Delete } from "lucide-react";
+import { Delete, ChevronDown, ChevronUp, Keyboard } from "lucide-react";
 
 type SymbolKey = string | { label: string; insert: string; action?: "back" | "clear"; wide?: boolean; muted?: boolean };
 
@@ -109,9 +109,18 @@ export function MathKeyboard({ onInsert, onBackspace, onClear }: MathKeyboardPro
     return ["Numbers"];
   });
 
+  const [collapsed, setCollapsed] = useState<boolean>(() => {
+    const saved = localStorage.getItem("math-keyboard-collapsed-v1");
+    return saved === null ? true : saved === "true";
+  });
+
   useEffect(() => {
     localStorage.setItem("math-keyboard-tabs-v2", JSON.stringify(activeTabs));
   }, [activeTabs]);
+
+  useEffect(() => {
+    localStorage.setItem("math-keyboard-collapsed-v1", String(collapsed));
+  }, [collapsed]);
 
   const toggleTab = (tab: KeyboardKey) => {
     setActiveTabs(prev =>
@@ -137,6 +146,26 @@ export function MathKeyboard({ onInsert, onBackspace, onClear }: MathKeyboardPro
 
   return (
     <div className="bg-secondary/50 border rounded-md p-3 flex flex-col gap-3">
+      <button
+        type="button"
+        onClick={() => setCollapsed(c => !c)}
+        className="flex items-center justify-between w-full text-left"
+        aria-expanded={!collapsed}
+        data-testid="mathkb-toggle"
+      >
+        <span className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+          <Keyboard className="w-4 h-4" />
+          Symbol keyboard
+        </span>
+        {collapsed ? (
+          <ChevronDown className="w-4 h-4 text-muted-foreground" />
+        ) : (
+          <ChevronUp className="w-4 h-4 text-muted-foreground" />
+        )}
+      </button>
+
+      {!collapsed && (
+        <>
       <div className="flex flex-wrap gap-1">
         {(Object.keys(KEYBOARDS) as KeyboardKey[]).map(tab => (
           <button
@@ -194,6 +223,8 @@ export function MathKeyboard({ onInsert, onBackspace, onClear }: MathKeyboardPro
           </div>
         )}
       </div>
+        </>
+      )}
     </div>
   );
 }
