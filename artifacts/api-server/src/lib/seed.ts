@@ -14,7 +14,7 @@ import { logger } from "./logger";
 // the value stored in seed_meta; a mismatch forces a full re-seed, so content
 // edits self-heal in every environment (including a republished production)
 // without a manual database wipe.
-const SEED_CONTENT_VERSION = "2026-06-08-reasoning-questions";
+const SEED_CONTENT_VERSION = "2026-06-10-realworld-cases-v2";
 
 type SeedTopic = {
   slug: string;
@@ -49,7 +49,11 @@ So ethics is not, at bottom, a list of rules. It is an attempt to make explicit 
 
 ## Why the distinction matters
 
-Much confusion in moral argument comes from sliding between description and evaluation — treating "people do X" as if it settled "people ought to do X." Keeping the two kinds of statements apart is the first discipline of clear ethical thinking.`,
+Much confusion in moral argument comes from sliding between description and evaluation — treating "people do X" as if it settled "people ought to do X." Keeping the two kinds of statements apart is the first discipline of clear ethical thinking.
+
+## In the real world
+
+In *Buck v. Bell* (1927), the U.S. Supreme Court upheld the forced sterilization of Carrie Buck, with Justice Oliver Wendell Holmes writing "three generations of imbeciles are enough." The reasoning slid straight from contested *descriptive* claims about heredity to a *normative* conclusion about who ought to be sterilized — exactly the confusion this section warns against. Roughly 70,000 Americans were sterilized under such laws.`,
   },
   {
     slug: "normative-categories",
@@ -71,7 +75,11 @@ Examples include: *good, bad, just, unjust, valiant, noble, wicked, depraved, co
 
 Ethics tries to map the **internal structure** of normative categories. When we call an act *condemnable*, what conditions are we claiming it meets? When we call a person *noble*, what are we attributing to them?
 
-A key lesson of this course is that these concepts are subtler than they first appear. "Good" turns out to mean several different things; "right" is not the same as "good"; and "condemnable" is not simply the absence of "commendable." Sorting these categories out carefully is most of the work of ethics.`,
+A key lesson of this course is that these concepts are subtler than they first appear. "Good" turns out to mean several different things; "right" is not the same as "good"; and "condemnable" is not simply the absence of "commendable." Sorting these categories out carefully is most of the work of ethics.
+
+## In the real world
+
+When Raoul Wallenberg used forged Swedish protective passports to shelter tens of thousands of Hungarian Jews from deportation in 1944, the world reached for words like *noble*, *heroic*, and *courageous*. None of those terms merely describe what he did — each one *evaluates* it. That is what makes them normative categories: you cannot apply them without already passing judgment.`,
   },
   {
     slug: "instrumental-intrinsic",
@@ -101,7 +109,11 @@ No two ethicists fully agree, but many count among the intrinsic goods: happines
 
 ## Not mutually exclusive
 
-The two kinds overlap. A sharp intellect is *instrumentally* good (it improves your position) **and** *intrinsically* good (its value exceeds any advantage it brings). The same holds for happiness, friendship, and honesty.`,
+The two kinds overlap. A sharp intellect is *instrumentally* good (it improves your position) **and** *intrinsically* good (its value exceeds any advantage it brings). The same holds for happiness, friendship, and honesty.
+
+## In the real world
+
+Hedge-fund manager Raj Rajaratnam made tens of millions of dollars in illegal profits by trading on inside information, until his 2011 conviction and 11-year prison sentence. The trades were *instrumentally* good for him — they served his bottom line beautifully. They were not in the slightest *ethically* good. That gap between "useful to the agent" and "good in itself" is the whole point of the distinction.`,
   },
   {
     slug: "goodness-commendableness",
@@ -127,7 +139,11 @@ Other intrinsic goods *are* commendable. Jones works long hours for a charity kn
 
 ## The bottom line
 
-There are **two kinds of intrinsic goods**: those that are commendable and those that are not. Praiseworthiness is not the same property as goodness — a lesson that becomes central when we turn to judging agents.`,
+There are **two kinds of intrinsic goods**: those that are commendable and those that are not. Praiseworthiness is not the same property as goodness — a lesson that becomes central when we turn to judging agents.
+
+## In the real world
+
+Mozart was composing and performing across Europe as a small child. The music and the joy it brought were genuinely, intrinsically good — yet the toddler deserved no *moral praise* for a raw gift he was simply born with. Praise became appropriate only later, for the discipline and labor he *chose* to add to the gift. Goodness and commendableness come apart.`,
   },
   {
     slug: "two-kinds-badness",
@@ -153,7 +169,11 @@ Other intrinsic evils clearly do warrant censure. Causing someone else to suffer
 
 ## The bottom line
 
-Some, but not all, intrinsically bad things are condemnable. "Intrinsically bad" is **not** identical with "worthy of condemnation" — just as "intrinsically good" is not identical with "worthy of praise." This symmetry between goodness/commendableness and badness/condemnableness is the backbone of how we will judge acts and agents.`,
+Some, but not all, intrinsically bad things are condemnable. "Intrinsically bad" is **not** identical with "worthy of condemnation" — just as "intrinsically good" is not identical with "worthy of praise." This symmetry between goodness/commendableness and badness/condemnableness is the backbone of how we will judge acts and agents.
+
+## In the real world
+
+The grief that swept the coastlines after the 2004 Indian Ocean tsunami was intrinsically bad — immense suffering — yet no one was to *blame* for it; it warranted compassion, not censure. Contrast the documented abuse of prisoners at Abu Ghraib that same year: that suffering was deliberately inflicted, which made it not merely bad but *condemnable*. Same category — intrinsic badness — but only one earns blame.`,
   },
   {
     slug: "morally-complex",
@@ -177,7 +197,11 @@ A single act can also be both praiseworthy and blameworthy. Jones, a tough and v
 
 ## The lesson
 
-Most real situations are mixed. The temptation to label an act simply "good" or simply "bad" usually distorts it. Mature moral judgment means tracking several normative properties of the *same* act at once.`,
+Most real situations are mixed. The temptation to label an act simply "good" or simply "bad" usually distorts it. Mature moral judgment means tracking several normative properties of the *same* act at once.
+
+## In the real world
+
+The atomic bombing of Hiroshima in August 1945 is debated precisely because it was morally *mixed*: defenders argue it shortened the war and so saved lives, while it also killed roughly 100,000 people, most of them civilians. One can hold that it was good in one respect and terrible in another without contradiction — which is exactly the structure this section describes.`,
   },
   {
     slug: "non-privative",
@@ -203,7 +227,11 @@ Being **condemnable** is positive, not privative — it is the presence of somet
 
 People resist calling an act both good and bad partly because they wrongly think badness is the *absence* of goodness. It is not. A rock *lacks* goodness, yet a rock is not bad — it is neither good nor bad. To be bad you must have something **extra**: Hitler was bad not because he lacked something but because he *had* something rocks don't — ill will and a willingness to act on it.
 
-The other reason people resist is psychological: it is easier to sort the world into saints and monsters than to see everyone, including oneself, as part-saint and part-monster. But that craving for simplicity does not match the real moral structure of most acts.`,
+The other reason people resist is psychological: it is easier to sort the world into saints and monsters than to see everyone, including oneself, as part-saint and part-monster. But that craving for simplicity does not match the real moral structure of most acts.
+
+## In the real world
+
+At the Wannsee Conference in January 1942, senior Nazi officials met to coordinate the logistics of the "Final Solution" — schedules, quotas, methods. What made it monstrous was not the *absence* of anything but the *presence* of something extra: organized, deliberate ill will. Evil is a positive property; a rock lacks goodness too, yet a rock is not evil.`,
   },
 
   // Unit 2 — Obligation, Right, and Wrong
@@ -227,7 +255,11 @@ It follows that **wrongness comes in degrees** too. It is wrong to skip a lunch 
 
 ## Why this matters
 
-A binary picture — "obligatory or not," "wrong or not" — cannot capture moral life. Real decisions are about *comparing weights*: which obligation is stronger, which wrong is graver. The next sections build directly on this idea, since conflicts between obligations of different weight are what force the hardest choices.`,
+A binary picture — "obligatory or not," "wrong or not" — cannot capture moral life. Real decisions are about *comparing weights*: which obligation is stronger, which wrong is graver. The next sections build directly on this idea, since conflicts between obligations of different weight are what force the hardest choices.
+
+## In the real world
+
+When the Watergate tapes confirmed that President Nixon had helped cover up the 1972 break-in, the gravity of the scandal — which forced his 1974 resignation — came from the *weight* of the obligation he breached. A private citizen who tells a similar lie wrongs someone; a president who betrays the trust of an entire nation commits a far weightier wrong. Same kind of act, vastly different weight.`,
   },
   {
     slug: "outweigh-vs-cancel",
@@ -253,7 +285,11 @@ My obligation to save my children is **stronger** than my obligation not to stea
 
 Crucially, that does **not** mean my obligation not to steal *ceases to exist*. In taking the money I still do something to my friend that he has a right not to undergo, and that I therefore had an obligation not to do. An obligation that is outweighed by a stronger one is **overridden, not erased**.
 
-This is why doing "the right thing" in a dilemma can still leave a genuine moral residue — regret, a debt, something owed. The defeated obligation was real.`,
+This is why doing "the right thing" in a dilemma can still leave a genuine moral residue — regret, a debt, something owed. The defeated obligation was real.
+
+## In the real world
+
+In *R v Dudley and Stephens* (1884), shipwrecked sailors killed and ate a severely weakened cabin boy to survive. Even granting that survival weighed heavily, the court still convicted them of murder — because the obligation not to kill an innocent was *overridden, not erased*. The conviction was the law's way of marking the residue: the defeated obligation was real.`,
   },
   {
     slug: "right-least-bad",
@@ -277,7 +313,11 @@ In general, "the right course of action" means **the least bad course of action 
 
 ## Why this matters
 
-This dissolves the apparent paradox from Unit 1 — that an act can be wrong yet intrinsically good, or right yet bad. "Right" and "good" are simply different concepts. Recognizing that the right choice is often a bad one, chosen only because the others are worse, is essential to thinking honestly about dilemmas.`,
+This dissolves the apparent paradox from Unit 1 — that an act can be wrong yet intrinsically good, or right yet bad. "Right" and "good" are simply different concepts. Recognizing that the right choice is often a bad one, chosen only because the others are worse, is essential to thinking honestly about dilemmas.
+
+## In the real world
+
+When an oxygen tank exploded aboard Apollo 13 in 1970, every option facing mission control was bad — there was no path that was simply *good*. They chose to loop the crew around the Moon and ration power to the edge of survival: not a good outcome, but the *least bad* one the circumstances allowed. That is exactly what "the right course of action" means here.`,
   },
   {
     slug: "wrong-least-good",
@@ -305,7 +345,11 @@ If I choose to save the *smallest* group, I am still doing a **good** thing — 
 
 So an act can be **good and wrong at once**: good because it has real positive value, wrong because some available alternative was better. "Wrong" marks not the presence of badness but the *failure to be the best available* — the least good of the live options.
 
-Together with the previous section, this completes the decoupling of right/wrong from good/bad: all four are distinct, comparative notions.`,
+Together with the previous section, this completes the decoupling of right/wrong from good/bad: all four are distinct, comparative notions.
+
+## In the real world
+
+This is the animating idea behind the effective-altruism movement and charity evaluators like GiveWell: a donation that helps *some* people is genuinely good, yet it can still be the *wrong* choice if the same money could have saved far more lives elsewhere. Doing good is not the same as doing the most good available — and falling short of the best available option is exactly what "wrong" marks here.`,
   },
   {
     slug: "ought-implies-can",
@@ -327,7 +371,11 @@ But the principle needs a grain of salt. We saw that one can have **multiple con
 
 ## The principle survives, refined
 
-Still, the principle is not simply false. In such a conflict, there is **no single course of action** that I ought to carry out but cannot. It *is* within my power not to steal my friend's money (even if I cannot both refrain *and* save my children). And it seems that, if even that weren't within my power, I would have *no* obligation to refrain. So "ought" implies "can" holds for each obligation taken **singly**, even if the full set of obligations cannot be jointly satisfied.`,
+Still, the principle is not simply false. In such a conflict, there is **no single course of action** that I ought to carry out but cannot. It *is* within my power not to steal my friend's money (even if I cannot both refrain *and* save my children). And it seems that, if even that weren't within my power, I would have *no* obligation to refrain. So "ought" implies "can" holds for each obligation taken **singly**, even if the full set of obligations cannot be jointly satisfied.
+
+## In the real world
+
+When COVID-19 lockdowns in 2020 made it physically impossible to perform many signed contracts, courts and *force majeure* clauses widely excused the non-performance. The law echoes the principle "ought implies can": where compliance is genuinely impossible, the obligation to comply lapses. You cannot be bound to do what cannot be done.`,
   },
   {
     slug: "legality-morality",
@@ -349,7 +397,11 @@ At the same time, the two frequently coincide. It is illegal to kill people (exc
 
 ## A delicate relationship
 
-*How* legality and morality are related is a subtle question, not settled by either of the points above. What this course insists on is only the **distinction**: that an act is legal does not make it moral, and that an act is illegal does not make it immoral. Confusing "it's the law" with "it's right" — in either direction — is one of the most common and most dangerous mistakes in practical ethics.`,
+*How* legality and morality are related is a subtle question, not settled by either of the points above. What this course insists on is only the **distinction**: that an act is legal does not make it moral, and that an act is illegal does not make it immoral. Confusing "it's the law" with "it's right" — in either direction — is one of the most common and most dangerous mistakes in practical ethics.
+
+## In the real world
+
+Under the Fugitive Slave Act of 1850 it was *illegal* to help an escaped enslaved person — yet Harriet Tubman's work on the Underground Railroad was deeply *moral*. A century later, it was illegal for Rosa Parks to keep her bus seat in 1955, and unmistakably moral. Law and morality can point in opposite directions; "it's the law" never settles "it's right."`,
   },
 
   // Unit 3 — Acts, Agents, and Judgment
@@ -373,7 +425,11 @@ Suppose Jones is on trial for a murder he in fact committed, but the jury lacks 
 
 ## The general principle
 
-Even when an act *is* condemnable, one does not automatically have the right to condemn it. One has that right only with sufficient information. To condemn without it is itself to act condemnably — making an accusation one does not know to be correct, even if by coincidence it is. The striking upshot: **it can be condemnable to condemn the condemnable.**`,
+Even when an act *is* condemnable, one does not automatically have the right to condemn it. One has that right only with sufficient information. To condemn without it is itself to act condemnably — making an accusation one does not know to be correct, even if by coincidence it is. The striking upshot: **it can be condemnable to condemn the condemnable.**
+
+## In the real world
+
+In 1990, five teenagers — the "Central Park Five" — were convicted of a brutal assault on the strength of coerced confessions and almost no physical evidence; DNA exonerated them in 2002. Convicting someone you do not *know* to be guilty is wrongful even if they happen to be guilty. Here the boys were innocent, which only sharpens the lesson: the act of condemning on insufficient grounds was condemnable in its own right.`,
   },
   {
     slug: "act-vs-agent",
@@ -399,7 +455,11 @@ Mary did not do "the right thing." But is she **morally worse** than Kathy? No. 
 
 ## The principle
 
-Praise and blame attach to the **agent's intention**, not to the result. Good outcomes from evil intentions earn no praise; tragic outcomes from good intentions earn no blame.`,
+Praise and blame attach to the **agent's intention**, not to the result. Good outcomes from evil intentions earn no praise; tragic outcomes from good intentions earn no blame.
+
+## In the real world
+
+In the thalidomide tragedy (late 1950s–1962), doctors who prescribed the drug for morning sickness acted on the best evidence available and intended only to help — yet roughly 10,000 babies were born with severe defects. Those doctors are not on a moral par with the manufacturer that suppressed safety warnings. Same terrible outcome; the blame tracks who *intended* what, not what happened to result.`,
   },
   {
     slug: "intention-attempts",
@@ -421,7 +481,11 @@ Suppose you keep agreeing to visit a tiresome ailing aunt, and every time some g
 
 ## Why this is consistent
 
-It remains true that two people with *exactly* the same intentions deserve exactly the same praise or blame, success or not. But as a **general rule**, success or failure is *evidence* about how resolute the intention was. Those who succeed at crimes are, on average, less conflicted about wanting to. So punishing attempts less severely is consistent with the view that intention — not outcome — is what we are really judging.`,
+It remains true that two people with *exactly* the same intentions deserve exactly the same praise or blame, success or not. But as a **general rule**, success or failure is *evidence* about how resolute the intention was. Those who succeed at crimes are, on average, less conflicted about wanting to. So punishing attempts less severely is consistent with the view that intention — not outcome — is what we are really judging.
+
+## In the real world
+
+In most legal systems, attempted murder is typically punished less severely than a completed murder — for example, under English law murder carries a mandatory life sentence while attempted murder does not. The justification fits this section: on average, those who actually go through with a killing were more resolved to do it, while a failure can be evidence of a fainter, more conflicted intention. The law is, in effect, judging the firmness of the intention.`,
   },
   {
     slug: "hitler-problem",
@@ -441,7 +505,11 @@ Of course he never announced, "It's my intention to do evil." But public speeche
 
 ## The general lesson
 
-The "good intentions" defense cannot be granted on a person's say-so, nor inferred from the fact that they cloak their aims in noble language. We judge intentions by the **whole pattern of conduct** and by what any minimally reasonable person in their position would have known. Properly understood, the Hitler case does not refute the intention-based view of blame — it illustrates how to read intentions honestly rather than naively.`,
+The "good intentions" defense cannot be granted on a person's say-so, nor inferred from the fact that they cloak their aims in noble language. We judge intentions by the **whole pattern of conduct** and by what any minimally reasonable person in their position would have known. Properly understood, the Hitler case does not refute the intention-based view of blame — it illustrates how to read intentions honestly rather than naively.
+
+## In the real world
+
+At his 1961 trial in Jerusalem, Adolf Eichmann insisted he had merely "followed orders" and meant no evil. The court judged him not by his self-description but by the whole pattern of his conduct — and convicted him. Hannah Arendt's phrase "the banality of evil" captures the point: the "good intentions" defense cannot be granted on a defendant's say-so.`,
   },
   {
     slug: "immorality-toward-self",
@@ -465,7 +533,11 @@ This does not put self-harmers in the same moral category as those who harm othe
 
 "But you said self-harmers behave immorally, and you also call them hyper-principled — isn't that inconsistent?" No. That an act is **principle-driven does not make it right**. There are many ethical principles, and not all are good. Some people felt it their *duty* to support Hitler — that was a principle, just a bad one. By acting on similarly misguided principles, people can wrong **themselves**.
 
-It is even argued elsewhere that, in a sense, *all* acts of immorality are ultimately acts of immorality toward oneself — a thought the next section pursues through the question of punishment.`,
+It is even argued elsewhere that, in a sense, *all* acts of immorality are ultimately acts of immorality toward oneself — a thought the next section pursues through the question of punishment.
+
+## In the real world
+
+Japan recognizes *karoshi* — death from overwork — as a documented cause of death; the 2015 suicide of 24-year-old Dentsu employee Matsuri Takahashi after extreme overtime became a national scandal. Such overwork is often driven by a *principle*: devotion, duty, never letting the team down. That the conduct is principle-driven does not make it right — one can wrong *oneself* by acting on a misguided principle.`,
   },
   {
     slug: "self-harm-autonomy",
@@ -489,7 +561,11 @@ Two further reasons. **First**, self-destructive behavior is *its own punishment
 
 ## The conclusion
 
-So the fact that we (rightly) refrain from punishing self-harm does **not** show that self-harm is morally permissible. It shows only that **wrongdoing and desert-of-punishment are separate questions**. An act can be genuinely wrong even when punishing it would be the worse course.`,
+So the fact that we (rightly) refrain from punishing self-harm does **not** show that self-harm is morally permissible. It shows only that **wrongdoing and desert-of-punishment are separate questions**. An act can be genuinely wrong even when punishing it would be the worse course.
+
+## In the real world
+
+Britain's Suicide Act of 1961 decriminalized attempted suicide. The aim was not to declare the act morally fine, but to recognize that punishing it would add cruelty to suffering and violate the person's autonomy. That we rightly refuse to punish self-harm shows only that wrongdoing and desert-of-punishment are separate questions.`,
   },
 
   // Unit 4 — Metaethics and Moral Truth
@@ -518,7 +594,11 @@ If either doctrine — or anything like it — is correct, then an "ought" **can
 
 ## The upshot
 
-So the is–ought barrier is not obviously a barrier at all. Whether it stands depends on substantive questions about what goodness *consists in* — questions metaethics must actually argue, not assume. This sets up Moore's more famous version of the objection.`,
+So the is–ought barrier is not obviously a barrier at all. Whether it stands depends on substantive questions about what goodness *consists in* — questions metaethics must actually argue, not assume. This sets up Moore's more famous version of the objection.
+
+## In the real world
+
+U.S. regulatory agencies routinely assign a "value of a statistical life" (the EPA has used figures around $10 million) and then derive what safety rules *ought* to be enacted from factual cost-and-risk data. Whatever one thinks of the practice, it is a working example of moving from an *is* (measured risks and benefits) to an *ought* (this regulation should be adopted) — exactly what the is–ought principle says cannot be done.`,
   },
   {
     slug: "open-question",
@@ -545,7 +625,11 @@ More directly, the premise is **deeply implausible**. If I know that X is a pers
 
 ## Why the next section matters
 
-Why did Moore find the question "open" even when the facts are damning? The next section diagnoses the deeper error: a faulty conception of **entailment**.`,
+Why did Moore find the question "open" even when the facts are damning? The next section diagnoses the deeper error: a faulty conception of **entailment**.
+
+## In the real world
+
+When Allied forces documented the Nazi death camps in 1945 and presented the evidence at Nuremberg, it was simply *not* an "open question" whether the Holocaust was evil. Moore's claim that no set of facts can ever close the moral question collapses here: once the facts are damning enough, the "openness" disappears entirely.`,
   },
   {
     slug: "entailment-ampliative",
@@ -569,7 +653,11 @@ If deduction really added nothing, then those who reason would know no more than
 
 ## The payoff for ethics
 
-Once we accept that deduction **extends** knowledge, Moore's "open question" loses its grip. From a rich enough set of facts about Jones, the conclusion that Jones is bad genuinely *follows* — even though the word "bad" never appeared among the premises. The newness of the conclusion is no objection; that is just what good inference does.`,
+Once we accept that deduction **extends** knowledge, Moore's "open question" loses its grip. From a rich enough set of facts about Jones, the conclusion that Jones is bad genuinely *follows* — even though the word "bad" never appeared among the premises. The newness of the conclusion is no objection; that is just what good inference does.
+
+## In the real world
+
+In 1846 Urbain Le Verrier deduced the existence and location of an unseen planet purely from anomalies in Uranus's orbit, using Newton's laws; astronomers pointed their telescopes and found Neptune within a degree of his prediction. No one "saw" Neptune in the equations — yet it followed from them. Deduction genuinely *extends* knowledge, which is why Moore's "nothing new can follow" assumption fails.`,
   },
   {
     slug: "genetic-vs-normative",
@@ -591,7 +679,11 @@ Suppose anthropologists discovered that our belief that torturing infants is wro
 
 ## The religion twist
 
-Views actually reached for ordinary reasons are often *redescribed* as divinely revealed, because "God told me X" wins more believers than "my own intellect told me X." But notice: people only believe "God said X" when they *already* find X plausible. Tell people God told you to destroy hospitals and no one believes you; tell them God told you to be kind and a few might. So the appearance of a genetic origin is frequently an illusion — the real grounds were the merits all along.`,
+Views actually reached for ordinary reasons are often *redescribed* as divinely revealed, because "God told me X" wins more believers than "my own intellect told me X." But notice: people only believe "God said X" when they *already* find X plausible. Tell people God told you to destroy hospitals and no one believes you; tell them God told you to be kind and a few might. So the appearance of a genetic origin is frequently an illusion — the real grounds were the merits all along.
+
+## In the real world
+
+August Kekulé said the ring structure of benzene came to him in a daydream of a snake seizing its own tail. The bizarre origin of the idea has no bearing on its correctness — and the structure *is* correct, confirmed by a century and a half of chemistry. To judge a belief by where it came from rather than whether it fits the facts is the genetic fallacy.`,
   },
   {
     slug: "truth-vs-use",
@@ -609,7 +701,11 @@ Many moral statements *are* pure propaganda — cynical manipulations meant to a
 
 ## Discovery is not invention
 
-It is often argued that morality has no objective basis because it is a "human creation" that "came into existence a few thousand years ago." This commits two errors. **First**, there was a time when people first *became aware* the Earth is round — but the Earth was round long before. Likewise, that people became aware of moral truths at some point does not mean those truths were *invented* then. **Second**, it confuses moral principles with the **institutions that enforce them**. Enforcement requires society; the principle does not. Even with no society at all, it is wrong to gouge out someone's eyes for fun. Calculators implementing the laws of arithmetic were built in the 1800s, but those laws existed long before the machines. The same holds for moral law.`,
+It is often argued that morality has no objective basis because it is a "human creation" that "came into existence a few thousand years ago." This commits two errors. **First**, there was a time when people first *became aware* the Earth is round — but the Earth was round long before. Likewise, that people became aware of moral truths at some point does not mean those truths were *invented* then. **Second**, it confuses moral principles with the **institutions that enforce them**. Enforcement requires society; the principle does not. Even with no society at all, it is wrong to gouge out someone's eyes for fun. Calculators implementing the laws of arithmetic were built in the 1800s, but those laws existed long before the machines. The same holds for moral law.
+
+## In the real world
+
+Slavery was formally abolished in the British Empire in 1833 and in the United States in 1865 — but its wrongness was not *invented* on those dates. People became *aware* of it and built institutions to enforce that awareness; the moral truth preceded the enforcement, just as the Earth was round before anyone proved it. Late discovery and social implementation are not the same as creation.`,
   },
   {
     slug: "reject-realism",
@@ -633,7 +729,11 @@ A popular argument: there is *more disagreement* in ethics than in other fields;
 
 ## The upshot
 
-None of this *proves* ethical realism. But it dismantles the single most common argument *against* it. The mere existence of moral disagreement — even widespread disagreement — is not evidence that there is no moral truth. The next section makes (i) and (iv) concrete.`,
+None of this *proves* ethical realism. But it dismantles the single most common argument *against* it. The mere existence of moral disagreement — even widespread disagreement — is not evidence that there is no moral truth. The next section makes (i) and (iv) concrete.
+
+## In the real world
+
+For decades physicians were sharply divided about what causes stomach ulcers, most blaming stress and diet. In 1984 Barry Marshall drank a culture of *H. pylori* to prove bacteria were the cause; he and Robin Warren won the 2005 Nobel Prize. There was fierce disagreement — and still a definite fact of the matter. Disagreement alone never shows there is no truth.`,
   },
   {
     slug: "disagreement-fact-value",
@@ -659,7 +759,11 @@ Here there is little I can do to defend my position beyond "I like chocolate mor
 
 ## The lesson
 
-The test for whether a statement is **truth-apt** is whether reasons can rationally bear on it. Many moral disputes are like **KV**, not **CB**: people marshal evidence, draw distinctions, and change their minds under argument — which is exactly what we would expect if there were a fact of the matter. And much apparent *moral* disagreement turns out, on inspection, to be **factual** disagreement (about consequences, circumstances, who did what) riding underneath a shared value.`,
+The test for whether a statement is **truth-apt** is whether reasons can rationally bear on it. Many moral disputes are like **KV**, not **CB**: people marshal evidence, draw distinctions, and change their minds under argument — which is exactly what we would expect if there were a fact of the matter. And much apparent *moral* disagreement turns out, on inspection, to be **factual** disagreement (about consequences, circumstances, who did what) riding underneath a shared value.
+
+## In the real world
+
+Whether smoking causes lung cancer was, for years, genuinely contested — the tobacco industry funded the doubt. But it was never "just a matter of opinion": the Doll–Hill studies of the 1950s and the 1964 U.S. Surgeon General's report let reasons and evidence settle it. A question is truth-apt when evidence can rationally bear on it, however heated the disagreement.`,
   },
   {
     slug: "capstone-ethical-truths",
@@ -682,7 +786,11 @@ This final section ties the course together. Each earlier idea is a thread; the 
 
 > A government can save more lives overall only by enacting a policy that knowingly, deliberately harms a small, blameless group. Is enacting it *right*? Is it *good*? Does the residual obligation to the harmed group survive? Would a leader who enacts it with the *intention* of protecting the powerful deserve the same praise as one who enacts it reluctantly to save lives?
 
-Answering this well requires the *whole course*: the intrinsic/instrumental distinction, weight and outweighing, "right" as least-bad, intention-based judgment of agents, and a clear-eyed view of whether there is a fact of the matter at all. **That** is ethical reasoning.`,
+Answering this well requires the *whole course*: the intrinsic/instrumental distinction, weight and outweighing, "right" as least-bad, intention-based judgment of agents, and a clear-eyed view of whether there is a fact of the matter at all. **That** is ethical reasoning.
+
+## In the real world
+
+Internal documents in the Ford Pinto case (1970s) showed the company weighing the cost of paying out wrongful-death claims against the cost of recalling a fuel-tank defect it knew could kill — knowingly trading a small number of lives against money. Judging it well takes the whole course: Is it *right* (least bad) or merely cost-minimizing? Is it *good*? Does the obligation to the harmed survive? And does the *intention* — protecting profit versus protecting people — change the verdict on the agents?`,
   },
 ];
 
